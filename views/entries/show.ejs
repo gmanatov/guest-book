@@ -1,0 +1,13 @@
+<%- include('../partials/header') %>
+
+<%= entry.date %>
+-
+<%= entry.time %>
+-
+<b><%= entry.author %></b>
+<br><br>
+<%= entry.content %>
+<br><br>
+<a href="/entries/<%= entry.id %>/edit">Edit this Entry</a>
+
+<%- include('../partials/footer') %>

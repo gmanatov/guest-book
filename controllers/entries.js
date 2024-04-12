@@ -2,7 +2,8 @@ const Entry = require('../models/entry')
 
 module.exports = {
     index,
-    delete: deleteEntry
+    delete: deleteEntry,
+    show
 }
 
 function index(req, res){
@@ -15,4 +16,11 @@ function index(req, res){
 function deleteEntry(req, res) {
     Entry.deleteOne(req.params.id)
     res.redirect('/entries')
-  }
+}
+
+function show(req, res) {
+  res.render('entries/show', {
+    entry: Entry.getOne(req.params.id),
+    title: 'Details of an Entry'
+  })
+}

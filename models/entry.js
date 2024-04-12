@@ -8,6 +8,7 @@ const entries = [
   module.exports = {
     getAll,
     deleteOne,
+    getOne,
   };
   	
   function getAll() {
@@ -19,4 +20,9 @@ const entries = [
     // Find the index for the entry
     const idx = entries.findIndex(entry => entry.id === id)
     entries.splice(idx, 1)
+  }
+
+  function getOne(id) {
+    id = parseInt(id)
+    return entries.find(entry => entry.id === id)
   }

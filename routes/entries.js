@@ -6,7 +6,7 @@ var entriesCtrl = require('../controllers/entries')
 router.get('/', entriesCtrl.index)
 
 // GET /todos/:id
-router.get('/:id', todosCtrl.show)
+router.get('/:id', entriesCtrl.show)
 
 // DELETE /todos/:id
 router.delete('/:id', entriesCtrl.delete)
