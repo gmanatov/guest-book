@@ -1,7 +1,8 @@
 const Entry = require('../models/entry')
 
 module.exports = {
-    index
+    index,
+    delete: deleteEntry
 }
 
 function index(req, res){
@@ -10,3 +11,8 @@ function index(req, res){
       title: 'All Entries:'
     });
 }
+
+function deleteEntry(req, res) {
+    Entry.deleteOne(req.params.id)
+    res.redirect('/entries')
+  }

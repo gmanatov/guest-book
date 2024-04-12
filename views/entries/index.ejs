@@ -6,7 +6,7 @@
       <% entries.forEach(function(e) { %>
         <li>
             
-            <form action="/todos/<%= e.id %>?_method=DELETE" method="POST" class="delete-form">
+            <form action="/entries/<%= e.id %>?_method=DELETE" method="POST" class="delete-form">
                 <button type="submit">X</button>
             </form>
 

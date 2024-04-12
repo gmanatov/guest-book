@@ -6,9 +6,17 @@ const entries = [
   ];
 
   module.exports = {
-    getAll
+    getAll,
+    deleteOne,
   };
   	
   function getAll() {
     return entries;
+  }
+
+  function deleteOne(id) {
+    id = parseInt(id)
+    // Find the index for the entry
+    const idx = entries.findIndex(entry => entry.id === id)
+    entries.splice(idx, 1)
   }
