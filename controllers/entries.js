@@ -6,7 +6,7 @@ module.exports = {
 
 function index(req, res){
     res.render('entries/index', {
-      todos: Todo.getAll(),
+      todos: Entry.getAll(),
       title: 'All Entries:'
     });
 }
