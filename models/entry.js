@@ -9,6 +9,7 @@ const entries = [
     getAll,
     deleteOne,
     getOne,
+    create,
   };
   	
   function getAll() {
@@ -25,4 +26,21 @@ const entries = [
   function getOne(id) {
     id = parseInt(id)
     return entries.find(entry => entry.id === id)
+  }
+
+  function create(entry) {
+    let now = new Date();
+    // "Randomizing ID"
+    entry.id = Date.now() % 1000000
+    let month = now.getMonth() + 1
+    if (month < 10) {month = '0' + month}
+    let day = now.getDate()
+    if (day < 10) {day = '0' + day}
+    let year = now.getFullYear()
+    entry.date = `${month}/${day}/${year}`
+    let time = new Date().toLocaleTimeString()
+    if (time[1] == ':') {time = '0' + time}
+    entry.time = time
+    if (entry.author == '') {entry.author = '<blank>'}
+    entries.push(entry)
   }
