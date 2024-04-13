@@ -7,6 +7,7 @@ module.exports = {
     new: newEntry,
     create,
     edit,
+    update,
 }
 
 function index(req, res){
@@ -48,4 +49,9 @@ function edit(req,res) {
     title: 'Edit Entry',
     entry
   })
+}
+
+function update(req, res){
+  Entry.update(req.params.id, req.body)
+  res.redirect(`/entries/${req.params.id}`)
 }

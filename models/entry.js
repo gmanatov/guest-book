@@ -10,6 +10,7 @@ const entries = [
     deleteOne,
     getOne,
     create,
+    update
   };
   	
   function getAll() {
@@ -43,4 +44,11 @@ const entries = [
     entry.time = time
     if (entry.author == '') {entry.author = '<blank>'}
     entries.push(entry)
+  }
+
+  function update(id, updatedEntry){
+    id = parseInt(id)
+    const entry = entries.find(entry => entry.id === id)
+    //entry.content = updatedEntry.content
+    Object.assign(entry, updatedEntry)
   }

@@ -15,5 +15,7 @@ router.get('/:id', entriesCtrl.show)
 router.get('/:id/edit', entriesCtrl.edit)
 // DELETE /entries/:id
 router.delete('/:id', entriesCtrl.delete)
+// PUT /entries/:id
+router.put('/:id', entriesCtrl.update)
 
 module.exports = router;
