@@ -11,7 +11,20 @@
 <a href="/entries/<%= entry.id %>/edit">Edit this Entry</a>
 <br><br>
 <hr>
-<br><br>
-
+<h3>Comments Section</h3>
+<ul>
+    <% entry.comments.forEach(function(e) { %>
+      <li>
+            <%= e.date %> - <%= e.time %> - <b><%= e.author %></b> 
+            <form action="/entries/<%= e.id %>?_method=DELETE" method="POST" class="delete-form">
+                <button type="submit">DELETE</button>
+            </form>
+            <br><br>
+            <%= e.content %>
+            <br>
+            _________________________________________________________________
+      </li>
+    <% }); %>
+</ul>
 
 <%- include('../partials/footer') %>

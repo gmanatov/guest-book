@@ -9,6 +9,7 @@ const entrySchema = new Schema({
   content: String,
   comments: [
     {
+      id: Number,
       author: String,
       date: String,
       time: String,
