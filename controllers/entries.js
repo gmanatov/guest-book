@@ -18,7 +18,7 @@ async function index(req, res){
   });
 }
 
-//LEGACY function index(req, res){
+//LEGACY NON DB function index(req, res){
 //     res.render('entries/index', {
 //       entries: Entry.getAll(),
 //       title: 'All Entries:'
@@ -31,7 +31,7 @@ async function deleteEntry(req, res) {
   res.redirect('/entries')
 }
 
-//LEGACY function deleteEntry(req, res) {
+//LEGACY NON DB function deleteEntry(req, res) {
 //     Entry.deleteOne(req.params.id)
 //     res.redirect('/entries')
 // }
@@ -45,7 +45,7 @@ async function show(req, res) {
   })
 }
 
-//LEGACY function show(req, res) {
+//LEGACY NON DB function show(req, res) {
 //   res.render('entries/show', {
 //     entry: Entry.getOne(req.params.id),
 //     title: 'Details of an Entry'
@@ -72,7 +72,6 @@ async function create(req, res){
   if (time[1] == ':') {time = '0' + time}
   req.body.time = time
   if (req.body.author == '') {req.body.author = '<blank>'}
-
   try {
     await Entry.create(req.body);
     // Always redirect after CUDing data
@@ -84,7 +83,7 @@ async function create(req, res){
   }
 }
 
-//LEGACY function create(req, res) {
+//LEGACY NON DB function create(req, res) {
 //   console.log(req.body)
 //   // Models are responsible for CRUD'ing the data
 //   Entry.create(req.body)
@@ -92,13 +91,22 @@ async function create(req, res){
 //   res.redirect('/entries')
 // }
 
-function edit(req,res) {
-  const entry = Entry.getOne(req.params.id)
+async function edit(req,res) {
+  const chsnEntr = parseInt(req.params.id)
+  const entry = await Entry.findOne({id: chsnEntr})
   res.render('entries/edit', {
     title: 'Edit Entry',
     entry
   })
 }
+
+//LEGACY NON DB function edit(req,res) {
+//   const entry = Entry.getOne(req.params.id)
+//   res.render('entries/edit', {
+//     title: 'Edit Entry',
+//     entry
+//   })
+// }
 
 function update(req, res){
   Entry.update(req.params.id, req.body)
