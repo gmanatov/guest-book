@@ -36,12 +36,21 @@ async function deleteEntry(req, res) {
 //     res.redirect('/entries')
 // }
 
-function show(req, res) {
+async function show(req, res) {
+  const chsnEntr = parseInt(req.params.id)
+  const entry = await Entry.findOne({id: chsnEntr})
   res.render('entries/show', {
-    entry: Entry.getOne(req.params.id),
-    title: 'Details of an Entry'
+    entry,
+    title: 'Details of an Entry:'
   })
 }
+
+//LEGACY function show(req, res) {
+//   res.render('entries/show', {
+//     entry: Entry.getOne(req.params.id),
+//     title: 'Details of an Entry'
+//   })
+// }
 
 function newEntry(req, res) {
   res.render('entries/new', {
