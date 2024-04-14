@@ -8,7 +8,8 @@ module.exports = {
     create,
     edit,
     update,
-    deleteComment
+    deleteComment,
+    createComment
 }
 
 async function index(req, res){
@@ -46,6 +47,40 @@ async function deleteComment(req, res) {
   entry.comments = entry.comments.filter(comment => comment.id !== comId);
   await entry.save();
   res.redirect(`/entries/${req.params.id}`)
+}
+
+async function createComment(req, res){
+  let now = new Date();
+  // "Randomizing ID"
+  req.body.id = Date.now() % 1000000
+
+  let month = now.getMonth() + 1
+  if (month < 10) {month = '0' + month}
+  let day = now.getDate()
+  if (day < 10) {day = '0' + day}
+  let year = now.getFullYear()
+
+  req.body.date = `${month}/${day}/${year}`
+
+  let time = new Date().toLocaleTimeString()
+  if (time[1] == ':') {time = '0' + time}
+  req.body.time = time
+
+  if (req.body.author == '') {req.body.author = '<blank>'}
+
+  const entryId = parseInt(req.params.id)
+
+  try {
+    const entry = await Entry.findOne({ id: entryId });
+    entry.comments.unshift(req.body);
+    await entry.save();
+    // Always redirect after CUDing data
+    res.redirect(`/entries/${req.params.id}`);
+  } catch (err) {
+    // Typically some sort of validation error
+    console.log(err);
+    res.render('entries/new', { errorMsg: err.message });
+  }
 }
 
 async function show(req, res) {
