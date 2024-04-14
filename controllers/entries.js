@@ -35,13 +35,40 @@ function newEntry(req, res) {
   });
 }
 
-function create(req, res) {
-  console.log(req.body)
-  // Models are responsible for CRUD'ing the data
-  Entry.create(req.body)
-  //Always do a redirect when data has been changed
-  res.redirect('/entries')
+async function create(req, res){
+  let now = new Date();
+  // "Randomizing ID"
+  req.body.id = Date.now() % 1000000
+  let month = now.getMonth() + 1
+  if (month < 10) {month = '0' + month}
+  let day = now.getDate()
+  if (day < 10) {day = '0' + day}
+  let year = now.getFullYear()
+  req.body.date = `${month}/${day}/${year}`
+  let time = new Date().toLocaleTimeString()
+  if (time[1] == ':') {time = '0' + time}
+  req.body.time = time
+  if (req.body.author == '') {req.body.author = '<blank>'}
+
+  try {
+    await Entry.create(req.body);
+    // Always redirect after CUDing data
+    // We'll refactor to redirect to the movies index after we implement it
+    res.redirect('/entries');
+  } catch (err) {
+    // Typically some sort of validation error
+    console.log(err);
+    res.render('entries/new', { errorMsg: err.message });
+  }
 }
+
+//LEGACY function create(req, res) {
+//   console.log(req.body)
+//   // Models are responsible for CRUD'ing the data
+//   Entry.create(req.body)
+//   //Always do a redirect when data has been changed
+//   res.redirect('/entries')
+// }
 
 function edit(req,res) {
   const entry = Entry.getOne(req.params.id)
