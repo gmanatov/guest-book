@@ -8,6 +8,7 @@ module.exports = {
     create,
     edit,
     update,
+    deleteComment
 }
 
 async function index(req, res){
@@ -35,6 +36,17 @@ async function deleteEntry(req, res) {
 //     Entry.deleteOne(req.params.id)
 //     res.redirect('/entries')
 // }
+
+async function deleteComment(req, res) {
+  console.log('it gets to deleteComment')
+  const entryId = parseInt(req.params.id)
+  const comId = parseInt(req.params.cid)
+  console.log('cid= ',comId)
+  const entry = await Entry.findOne({ id: entryId });
+  entry.comments = entry.comments.filter(comment => comment.id !== comId);
+  await entry.save();
+  res.redirect(`/entries/${req.params.id}`)
+}
 
 async function show(req, res) {
   const chsnEntr = parseInt(req.params.id)
