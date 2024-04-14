@@ -18,7 +18,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(f = (req, res, next) => {
-  console.log('Middleware is on...')
   // Add a time property to the res.locals object
   // The time property will then be accessible within templates
   res.locals.time = new Date().toLocaleTimeString()

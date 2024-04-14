@@ -25,10 +25,16 @@ async function index(req, res){
 //     });
 // }
 
-function deleteEntry(req, res) {
-    Entry.deleteOne(req.params.id)
-    res.redirect('/entries')
+async function deleteEntry(req, res) {
+  const delId = parseInt(req.params.id)
+  await Entry.deleteOne({id: delId})
+  res.redirect('/entries')
 }
+
+//LEGACY function deleteEntry(req, res) {
+//     Entry.deleteOne(req.params.id)
+//     res.redirect('/entries')
+// }
 
 function show(req, res) {
   res.render('entries/show', {
@@ -61,7 +67,6 @@ async function create(req, res){
   try {
     await Entry.create(req.body);
     // Always redirect after CUDing data
-    // We'll refactor to redirect to the movies index after we implement it
     res.redirect('/entries');
   } catch (err) {
     // Typically some sort of validation error
