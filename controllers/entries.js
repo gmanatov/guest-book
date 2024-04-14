@@ -10,12 +10,20 @@ module.exports = {
     update,
 }
 
-function index(req, res){
-    res.render('entries/index', {
-      entries: Entry.getAll(),
-      title: 'All Entries:'
-    });
+async function index(req, res){
+  const entries = await Entry.find({})
+  res.render('entries/index', {
+    entries,
+    title: 'All Entries:'
+  });
 }
+
+//LEGACY function index(req, res){
+//     res.render('entries/index', {
+//       entries: Entry.getAll(),
+//       title: 'All Entries:'
+//     });
+// }
 
 function deleteEntry(req, res) {
     Entry.deleteOne(req.params.id)
