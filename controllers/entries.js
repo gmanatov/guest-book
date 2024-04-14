@@ -92,8 +92,8 @@ async function create(req, res){
 // }
 
 async function edit(req,res) {
-  const chsnEntr = parseInt(req.params.id)
-  const entry = await Entry.findOne({id: chsnEntr})
+  const chsnId = parseInt(req.params.id)
+  const entry = await Entry.findOne({id: chsnId})
   res.render('entries/edit', {
     title: 'Edit Entry',
     entry
@@ -108,7 +108,21 @@ async function edit(req,res) {
 //   })
 // }
 
-function update(req, res){
-  Entry.update(req.params.id, req.body)
+async function update(req, res){
+  const updId = parseInt(req.params.id)
+  console.log('New info: ')
+  console.log(req.body)
+  const entry = await Entry.findOne({id: updId})
+  console.log('Data being updated: ')
+  console.log(entry)
+  Object.assign(entry, req.body)
+  await entry.save()
+  console.log('result: ')
+  console.log(await Entry.findOne({id: updId}))
   res.redirect(`/entries/${req.params.id}`)
 }
+
+//LEGACY NON DB function update(req, res){
+//   Entry.update(req.params.id, req.body)
+//   res.redirect(`/entries/${req.params.id}`)
+// }
