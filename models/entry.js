@@ -7,9 +7,15 @@ const entrySchema = new Schema({
   time: String,
   author: String,
   content: String,
-}, {
-    timestamps: true
-  });
+  comments: [
+    {
+      author: String,
+      date: String,
+      time: String,
+      content: String,
+    }
+  ]
+});
 	
 // Compile the schema into a model and export it
 module.exports = mongoose.model('Entry', entrySchema);
