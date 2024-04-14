@@ -12,6 +12,16 @@
 <br><br>
 <hr>
 <h3>Comments Section:</h3>
+
+<form action="/entries/<%= entry.id %>/comments" method="POST" autocomplete="off">
+  Please enter your full name: <input type="text" name="author">
+  <br><br>
+  Enter your comment: <br>
+  <textarea name="content" rows="3" cols="40" required></textarea>
+  <br>
+  <button type="submit">Send Comment!</button>
+</form>
+
 <ul>
     <% entry.comments.forEach(function(e) { %>
       <br>

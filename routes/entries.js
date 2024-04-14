@@ -15,7 +15,6 @@ router.get('/:id', entriesCtrl.show)
 router.get('/:id/edit', entriesCtrl.edit)
 // DELETE /entries/:id
 router.delete('/:id', entriesCtrl.delete)
-
 // DELETE /entries/:id/comments/:id
 router.delete('/:id/comments/:cid', entriesCtrl.deleteComment)
 
