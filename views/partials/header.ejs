@@ -13,7 +13,7 @@
         <a href="/" class="nav-link">HOME</a>
         |
         <% if (user) { %>
-            <a href="/logout" class="nav-link">LOG OUT</a>
+            <a href="/logout" class="nav-link">LOG OUT (<%= user.name %>)</a>
         <% } else { %>
             <a href="/auth/google" class="login nav-link">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
         <% } %>

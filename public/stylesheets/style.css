@@ -1,14 +1,20 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url('https://i.imgur.com/LQIlMde.jpeg');
+  background-repeat: no-repeat;
+  background-size: 100% 117%;
+  background-attachment: fixed;
+  color: #FFFFFF;
 }
 
 a {
-  color: #00B7FF;
+  color: #FFFFFF;
 }
 
 .delete-form {
   display: inline-block;
+  align-items: center;
   margin-right: 10px;
 }
 	
@@ -20,24 +26,22 @@ li {
   list-style: none;
 }
 
-/* Styles for the navigation container */
 .nav-container {
   display: flex;
-  align-items: center; /* Align items vertically */
-  gap: 10px; /* Space between items */
+  align-items: center;
+  gap: 10px;
 }
 
-/* Style for navigation links */
+
 .nav-link {
   text-decoration: none;
   font-size: 17px;
   color: black;
-  padding: 0 10px; /* Padding around links for better touch */
+  padding: 0 10px;
 }
 
-/* Adjustments for the login image next to text */
 .login img {
-  vertical-align: middle; /* Align the image vertically with the text */
-  width: 20px; /* Adjust width as needed */
-  height: auto; /* Maintain aspect ratio */
+  vertical-align: middle; 
+  width: 20px;
+  height: auto;
 }
