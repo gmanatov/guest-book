@@ -1,4 +1,5 @@
 const Entry = require('../models/entry')
+const User = require('../models/user')
 
 module.exports = {
     index,
@@ -66,7 +67,7 @@ async function createComment(req, res){
   if (time[1] == ':') {time = '0' + time}
   req.body.time = time
 
-  if (req.body.author == '') {req.body.author = '<blank>'}
+  req.body.author = req.user.name
 
   const entryId = parseInt(req.params.id)
 
@@ -118,7 +119,8 @@ async function create(req, res){
   let time = new Date().toLocaleTimeString()
   if (time[1] == ':') {time = '0' + time}
   req.body.time = time
-  if (req.body.author == '') {req.body.author = '<blank>'}
+  req.body.author = req.user.name
+  //if (req.body.author == '') {req.body.author = '<blank>'}
   try {
     await Entry.create(req.body);
     // Always redirect after CUDing data

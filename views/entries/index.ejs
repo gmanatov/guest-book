@@ -6,15 +6,19 @@
       <% entries.forEach(function(e) { %>
         <li>
             
+            <% if ((user)&&(e.author == user.name)) { %>
             <form action="/entries/<%= e.id %>?_method=DELETE" method="POST" class="delete-form">
                 <button type="submit">DELETE</button>
             </form>
+            <% } %>
 
             <a href="/entries/<%= e.id %>"><%= e.date %> - <%= e.time %> - <%= e.author %></a>
 
         </li>
       <% }); %>
     </ul>
-    <a href="/entries/new">Add Entry</a>
+    <% if (user) { %>
+      <a href="/entries/new">Add Entry</a>
+    <% } %>
 
 <%- include('../partials/footer') %>
