@@ -19,3 +19,25 @@ a {
 li {
   list-style: none;
 }
+
+/* Styles for the navigation container */
+.nav-container {
+  display: flex;
+  align-items: center; /* Align items vertically */
+  gap: 10px; /* Space between items */
+}
+
+/* Style for navigation links */
+.nav-link {
+  text-decoration: none;
+  font-size: 17px;
+  color: black;
+  padding: 0 10px; /* Padding around links for better touch */
+}
+
+/* Adjustments for the login image next to text */
+.login img {
+  vertical-align: middle; /* Align the image vertically with the text */
+  width: 20px; /* Adjust width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
