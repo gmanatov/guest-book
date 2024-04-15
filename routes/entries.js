@@ -4,13 +4,10 @@ var entriesCtrl = require('../controllers/entries')
 
 /* GET entries listing. */
 router.get('/', entriesCtrl.index)
-
 // Define below BEFORE show route!
 router.get('/new', entriesCtrl.new)
 // POST /entries
 router.post('/', entriesCtrl.create)
-
-
 // GET /entries/:id
 router.get('/:id', entriesCtrl.show)
 // GET /entries/:id/edit
