@@ -32,7 +32,6 @@ li {
   gap: 10px;
 }
 
-
 .nav-link {
   text-decoration: none;
   font-size: 17px;
@@ -48,4 +47,18 @@ li {
 
 .main-title{
   font-size: 70px;
+}
+
+.content-entry{
+  font: 25px "American Typewriter";
+  margin-right: 95px;
+}
+
+.content-comment{
+  font: 19px "American Typewriter";
+  margin-right: 180px;
+}
+
+textarea {
+  font: 17px "American Typewriter", monospace;  /* Using Cutive Mono as a stand-in for American Typewriter */
 }
