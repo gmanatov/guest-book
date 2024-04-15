@@ -11,6 +11,7 @@ var methodOverride = require('method-override')
 require('dotenv').config()
 // connect to the database AFTER the config vars are processed
 require('./config/database');
+require('./config/passport');
 
 var indexRouter = require('./routes/index');
 var entriesRouter = require('./routes/entries');
