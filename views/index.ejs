@@ -1,2 +1,25 @@
-<%- include('./partials/header') %>
-<%- include('./partials/footer') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <title>Guest-Book</title>
+</head>
+<body>
+    <div class="nav-container">
+        <a href="/entries" class="<%= title === 'All Entries' ? 'active' : '' %> nav-link">ALL ENTRIES</a>
+        |
+        <a href="/" class="nav-link">HOME</a>
+        |
+        <% if (user) { %>
+            <a href="/logout" class="nav-link">LOG OUT (<%= user.name %>)</a>
+        <% } else { %>
+            <a href="/auth/google" class="login nav-link">LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"></a>
+        <% } %>
+    </div>
+    
+    <h1 class="main-title"> <%= title %></h1>
+
+</body>
+</html>

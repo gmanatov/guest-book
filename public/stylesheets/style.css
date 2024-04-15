@@ -19,7 +19,7 @@ a {
 }
 	
 .delete-form button {
-  color: red;
+  color: rgb(255, 0, 0);
 }
 	
 li {
@@ -36,7 +36,7 @@ li {
 .nav-link {
   text-decoration: none;
   font-size: 17px;
-  color: black;
+  color: rgb(255, 255, 255);
   padding: 0 10px;
 }
 
@@ -44,4 +44,8 @@ li {
   vertical-align: middle; 
   width: 20px;
   height: auto;
+}
+
+.main-title{
+  font-size: 70px;
 }
