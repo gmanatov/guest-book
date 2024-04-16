@@ -2,12 +2,11 @@
 ### Personalized space where anybody can share their experiences and connect through thoughtful entries!
   
 Technologies used:
- - HTML
- - CSS
- - Java Script
- - Express
- - MongoDB
+ - HTML/CSS/Java Script
  - NodeJS
+ - ExpressJS
+ - MongoDB
+ - Mongoose
 
 ### Getting Started: https://guest-book-app-v1-9c0330085e34.herokuapp.com/
 
