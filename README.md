@@ -1,5 +1,5 @@
 ## Guest Book
-### Aersonalized space where anybody can share their experiences and connect through thoughtful entries!
+### Personalized space where anybody can share their experiences and connect through thoughtful entries!
   
 Technologies used:
  - HTML
